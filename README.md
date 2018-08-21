@@ -4,21 +4,21 @@ Identifying key variables that can help to identify the duplication in listing o
 Objective: To identify the duplicates products which are appearing with different productId’s.
 Data Subset Chosen: I have chosen to work on Tunics.
 High level steps followed in arriving at the solution:
-1. Filtered the dataset to Tunics and saved them in separate file.
-2. Identified the relation between different variables in the data.
-3. Based on data understanding and objective, unnecessary columns are dropped, and only useful columns are retained.
-4. Products belonging to same family as well as category are taken in a group and similarity score was calculated for all possible combinations within the group. The process is repeated to all such groups.
+1) Filtered the dataset to Tunics and saved them in separate file.
+2) Identified the relation between different variables in the data.
+3) Based on data understanding and objective, unnecessary columns are dropped, and only useful columns are retained.
+4) Products belonging to same family as well as category are taken in a group and similarity score was calculated for all possible combinations within the group. The process is repeated to all such groups.
 
 Understandings:
-• From manual exploration of data, it is found that first 7 characters of two productIds are same means that the products belong to same family (most of the cases). Only first 6 characters are same in few of the cases.
-• For all productIds having first 8 characters common, they also have categories part in common. Therefore, productId gives information on categories for a given family of products.
-• All pairs of duplicate products had first 8 characters of productId common. However, it is also found that the vice versa is not true (i.e., products with same first 8 characters of productId need not necessarily be same/duplicate).
-• Above information can be used in checking the similarity of a product with other product in which both the products have first 8 characters of productId in common. This will reduce the total number of iterations/comparisons.
+1) From manual exploration of data, it is found that first 7 characters of two productIds are same means that the products belong to same family (most of the cases). Only first 6 characters are same in few of the cases.
+2) For all productIds having first 8 characters common, they also have categories part in common. Therefore, productId gives information on categories for a given family of products.
+3) All pairs of duplicate products had first 8 characters of productId common. However, it is also found that the vice versa is not true (i.e., products with same first 8 characters of productId need not necessarily be same/duplicate).
+4) Above information can be used in checking the similarity of a product with other product in which both the products have first 8 characters of productId in common. This will reduce the total number of iterations/comparisons.
 
 Assumptions:
-• For two similar/duplicate products, mrp, title and detailedSpecStr will be same.
-• Duplicates need to be detected whether or not a product belongs to same seller. Therefore, seller information does not greatly signify any importance in detecting the duplicates.
-• For the purpose of product listing, size does not matter whereas color matters.
+1) For two similar/duplicate products, mrp, title and detailedSpecStr will be same.
+2) Duplicates need to be detected whether or not a product belongs to same seller. Therefore, seller information does not greatly signify any importance in detecting the duplicates.
+3) For the purpose of product listing, size does not matter whereas color matters.
 
 Grouping of Products:
 1) The first 8 characters are same for the products falling under same family and category. This has been used to identify the first 8 characters for each productId. Any check for duplication will happen between productIds falling under same group only.
